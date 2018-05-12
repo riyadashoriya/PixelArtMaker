@@ -6,11 +6,9 @@ document.getElementById('submit').addEventListener("click", function(e){
   //Get the user input height and width.
   let height = document.getElementById('inputHeight').value;
   let width = document.getElementById('inputWidth').value;
-  let table = document.getElementById('pixelCanvas');
-  //Clear the table elements, whenever new dimensions are entered.
-  table.innerHTML = "";
+
   //Create table
-  makeGrid(height, width, table);
+  makeGrid(height, width);
 });
 
 var color = document.getElementById('colorPicker');
@@ -20,16 +18,22 @@ document.getElementById('colorPicker').addEventListener("change", function(){
 });
 
 //Call this function to create a table when size of table is submitted
-function makeGrid(height, width, table) {
-  for(var i = 0; i < height; i++) {
+function makeGrid(height, width) {
+
+  let table = document.getElementById('pixelCanvas');
+  //Clear the table elements, whenever new dimensions are entered.
+  table.innerHTML = "";
+
+  //Create table elements based on new dimensions.
+  for(let i = 0; i < height; i++) {
     let tr = document.createElement('tr');
-    for (var j = 0; j < width; j++) {
-        let td = document.createElement('td');
-        td.addEventListener("click", function() {
-          //Whenever any cell is clicked, change the color of the cell.
-          td.style.backgroundColor = color;
-        });
-        tr.appendChild(td);
+    for (let j = 0; j < width; j++) {
+      let td = document.createElement('td');
+      td.addEventListener("click", function() {
+        //Whenever any cell is clicked, change the color of the cell.
+        td.style.backgroundColor = color;
+      });
+      tr.appendChild(td);
     }
     table.appendChild(tr);
   }

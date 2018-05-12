@@ -7,3 +7,6 @@ You can:
 3. Click a cell in the grid to fill that cell with the chosen color.
 
 Note: You must be using the current version of Edge, Firefox, or Chrome. Due to implementation differences, this exercise does not work effectively in Safari or Opera.
+
+PS: document.createDocumentFragment() can be used to create table effectively. This will prevent reflow and repaint of the document every single time a td or tr is added. Document fragment is in memory and not a part of main dom tree.
+This improves the performance of the web page.
